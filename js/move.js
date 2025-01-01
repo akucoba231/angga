@@ -194,6 +194,7 @@ function nextActive(){
 			pionNumber = -1;
 		}
 		pionPlayer[++pionNumber].classList.add('active');
+		updateStatus();
 		cekPlayer();
 	}
 }
