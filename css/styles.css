@@ -283,3 +283,65 @@ body {
 		opacity: 1;
 	}
 }
+
+#waktu {
+  position: absolute;
+  background: #fff;
+  color: var(--latar);
+  width: 100px;
+  height: 30px;
+  top: 50px;
+  right: 20px;
+  z-index: 2;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pulse 1.5s infinite ease;
+}
+#waktu::before {
+  position: absolute;
+  content: 'Waktu Bermain';
+  color: #fff;
+  font-weight: bold;
+  width: 100%;
+  white-space: normal;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-family: serif;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.posisi {
+  position: absolute;
+  height: 30px;
+  width: 70px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.7);
+  z-index: 2;
+  color: #14A44D;
+  font-size: 1rem;
+  font-family: Sans-Serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  top: 290px;
+  right: 35px;
+}
+
+#posMacan {
+  top: 170px;
+}
+
+#posGajah {
+  top: 400px;
+}
+
+#posKerbau {
+  top: 500px;
+  
+}
