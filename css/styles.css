@@ -110,7 +110,7 @@ body {
 	transform: translate(-50%, -50%);
 	z-index: 12;
 	border: 1px solid #fff;
-	word-break: break-all;
+	word-break: normal;
 }
 
 .modalMisi {
