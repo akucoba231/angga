@@ -1,0 +1,285 @@
+:root {
+	--latar : #6F411F;
+	--lebar : 1080px;
+}
+
+*{
+	padding: 0;
+	margin: 0;
+	outline: 0;
+	border: none;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100vw;
+	background: var(--latar);
+	height: 100vh;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#main {
+	width: var(--lebar);
+	aspect-ratio: 16 / 9;
+	position: relative;
+}
+
+#main #bg {
+	width: var(--lebar);
+	position: relative;
+}
+
+#main .pion {
+	position: absolute;
+	width: 130px;
+	height: 70px;
+	z-index: 2;
+	left: 0;
+	top: 200px;
+	animation: pulse 2s infinite ease;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(1.0);
+	}
+	50% {
+		transform: scale(0.9);
+	}
+	100% {
+		transform: scale(1.0);
+	}
+}
+
+@keyframes pulseEdit {
+	0% {
+		transform: translateX(-50%) scale(1.0);
+	}
+	50% {
+		transform: translateX(-50%) scale(0.9);
+	}
+	100% {
+		transform: translateX(-50%) scale(1.0);
+	}
+}
+
+#main #macan {
+	left: 130px;
+	top: 30px;
+}
+
+#main #bebek {
+	left: 820px;
+	top: 10px;
+}
+
+#main #gajah {
+	top: 480px;
+	left: 840px;
+}
+
+#main #kerbau {
+	top: 500px;
+	left: 140px;
+}
+
+.active {
+	content: '';
+	position: absolute;
+	background: url(../pion/active.png) no-repeat;
+	background-position: 20% 0%;
+	background-size: 30%;
+	z-index: 6;
+}
+
+.modal {
+	position: absolute;
+	width: 30%;
+	padding: 1% 2%;
+	border-radius: 10px;
+	font-family: sans-serif;
+	font-size: 1.5rem;
+	color: #fff;
+	text-align: center;
+	background: rgba(111, 65, 31,.3);
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 12;
+	border: 1px solid #fff;
+	word-break: break-all;
+}
+
+.modalMisi {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	z-index: 11;
+	color: #fff;
+	background: rgba(111,65,31,.8);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.5rem;
+	font-family: serif;
+	padding: 10%;
+	word-break: break-all;
+}
+
+.modalMisi p {
+	font-family: sans-serif;
+	padding: 1% 2%;
+	border-radius: 10px;
+	background: #fff;
+	color: rgba(111,65,31,.8);
+	font-weight: bold;
+}
+
+.btnClose {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	right: 3%;
+	top: 3%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	background: transparent;
+	font-size: 2rem;
+	font-weight: bold;
+	border: 2px solid #fff;
+	border-radius: 15px;
+}
+
+.videoContainer {
+	position: relative;
+	border-radius: 15px;
+	margin: 1% auto;
+	width: 640px;
+	height: 480px;
+}
+
+.videoContainer::before {
+	position: absolute;
+	content: 'Mohon tunggu, video sedang dimuat...';
+	font-weight: bold;
+	font-family: monospace;
+	font-size: 1.2rem;
+	color: #999;
+	z-index: 12;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.videoContainer iframe {
+	position: relative;
+	z-index: 15;
+}
+
+.videoContainer a {
+	position: absolute;
+	bottom: 30%;
+	z-index: 12;
+	left: 50%;
+	font-size: 1rem;
+	transform: translateX(-50%);
+	border-radius: 15px;
+	color: #000;
+	font-family: sans-serif;
+}
+
+#reload {
+	position: absolute;
+	z-index: 2;
+	width: 50px;
+	height: 50px;
+	background: url('../assets/reload.png') no-repeat center center;
+	background-size: 50%;
+	background-color: #fff;
+	border-radius: 50%;
+	top: 445px;
+	left: 45px;
+	transition: 0.5s;
+}
+
+#btnHint {
+	position: absolute;
+	background: url('../assets/hint.png') no-repeat center center;
+	background-size: 80%;
+	background-color: #fff;
+	border-radius: 10px;
+	width: 50px;
+	height: 50px;
+	top: 20px;
+	left: 45px;
+	z-index: 2;
+	transition: 0.5s;
+}
+
+
+#reload:hover, #btnHint:hover {
+	transform: scale(1.2);
+}
+
+
+.logo {
+	position: absolute;
+	width: 180px;
+	height: 50px;
+	right: 0;
+	bottom: 1.5%;
+	z-index: 20;
+	background: url('../assets/logo.png') no-repeat center center;
+	background-size: cover;
+	background-color: #fff;
+	border-radius: 15px;
+	animation: pulse 2.5s infinite ease;
+}
+
+.page {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 4;
+	top: 0;
+	left: 0;
+}
+
+.page > img {
+	width: var(--lebar);
+}
+
+.fadeOut {
+	animation: fade-out 1.5s 1 linear;
+}
+
+.fadeIn {
+	display: block;
+	animation: fade-in 1.5s 1 linear;
+}
+
+@keyframes fade-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
