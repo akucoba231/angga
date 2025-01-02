@@ -345,3 +345,14 @@ body {
   top: 500px;
   
 }
+
+#by {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #f0ce88;
+  font-family: serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
