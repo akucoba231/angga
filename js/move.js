@@ -169,7 +169,7 @@ function move(){
 
 function removePlayer(nama){
 	let index = player.indexOf(nama);
-	player[index] = "-"; //agar pemenang tidak bisa bermain lagi
+	//player[index] = "-"; //agar pemenang tidak bisa bermain lagi
 	numberOfWinner += 1;
 	nextActive();
 }
