@@ -22,6 +22,7 @@ musik.onended = ()=>{playMusik()}
 let notifSound = new Audio("assets/notif.mp3");
 notifSound.load();
 function playNotif(){
+  jedaMusik();
 	if(notifSound.play()){
 		notifSound.load();
 		notifSound.play();
@@ -29,18 +30,27 @@ function playNotif(){
 	else {
 	notifSound.play();
 }
+
+setTimeout(()=>{
+  playMusik();
+}, 2050);
+
 }
 
 let winSound = new Audio("assets/win.mp3");
 winSound.load();
 function playWin(){
+  jedaMusik();
 	if(winSound.play()){
 		winSound.load();
 		winSound.play();
 	}
 	else {
 	winSound.play();
-}
+  }
+  setTimeout(()=>{
+    playMusik();
+  }, 10000)
 }
 
 let step = new Audio("assets/step.mp3");
@@ -65,6 +75,7 @@ function jedaMusik(){
 	if(musik.play()){
 		musik.pause();
 	}
+
 }
 
 function getEl(nama){
@@ -229,7 +240,7 @@ function cekPlayer(){
 
 
 function pesan(text){
-	playNotif();
+  playNotif();
 	let box  = document.createElement('div');
 	box.setAttribute('class','modal');
 	let isiBox =document.createElement('p');
@@ -255,6 +266,7 @@ function cekTile(){
 		let title = tmpMisi[0];
 		let video = tmpMisi[1];
 		video = video.replace('view?usp=drive_link','preview?autoplay=1');
+		
 		modal(title, video);
 		//setTimeout(()=>{
 			//window.open(video);
@@ -277,7 +289,7 @@ function modal(text, video){
 	<a href="${video.replace('preview','view')}">Tekan di sini, jika video gagal dimuat...</a>
 	`;
 	*/
-	//videoContainer -> video HTML5 autoplay allowfullscreen
+	jedaMusik();
 	
 	let vid = document.createElement('video');
 	let source = document.createElement('source');
@@ -288,11 +300,13 @@ function modal(text, video){
 	vid.setAttribute('style','width: 640px; height: 480px; position: relative;');
 	vid.setAttribute('controls','');
 	vid.setAttribute('autoplay','');
+	
 	vid.load();
-	jedaMusik();
 	vid.onload = ()=>{
 	  vid.play();
-	}
+	} 
+	
+	
 	videoContainer.appendChild(vid);
 	
 	let modal = document.createElement('div');
@@ -316,18 +330,15 @@ function modal(text, video){
 
 document.body.onclick = ()=>{ playMusik() }
 
+/*
 function tesTile(nama, posisi){
-	//let nama = getActive();
-	//nextActive(); //jika misi rahasia sudah dikerjakan
-	//alert(`Pemain ${nama} berada pada posisi ${posisi[nama]}`);
+
 		let tmpMisi = misi[nama][posisi];
 		tmpMisi = tmpMisi.split(',');
 		let title = tmpMisi[0];
 		let video = tmpMisi[1];
 		video = video.replace('view?usp=drive_link','preview?autoplay=1');
 		modal(title, video);
-		//setTimeout(()=>{
-			//window.open(video);
-		//}, 800);
-		
+	
 	}
+	*/
