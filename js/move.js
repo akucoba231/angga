@@ -61,6 +61,11 @@ function playMusik(){
 		musik.play();
 	}
 }
+function jedaMusik(){
+	if(musik.play()){
+		musik.pause();
+	}
+}
 
 function getEl(nama){
 	return document.getElementById(nama);
@@ -71,7 +76,7 @@ let posisi = {
 	'bebek' : 0,
 	'gajah' : 0,
 	'kerbau' : 0,
-}
+};
 
 let player = ['macan','bebek','gajah','kerbau'];
 
@@ -249,7 +254,7 @@ function cekTile(){
 		tmpMisi = tmpMisi.split(',');
 		let title = tmpMisi[0];
 		let video = tmpMisi[1];
-		video = video.replace('view','preview');
+		video = video.replace('view?usp=drive_link','preview?autoplay=1');
 		modal(title, video);
 		//setTimeout(()=>{
 			//window.open(video);
@@ -263,11 +268,33 @@ function cekTile(){
 function modal(text, video){
 	let videoContainer = document.createElement('div');
 	videoContainer.setAttribute('class','videoContainer');
+	
+//	video = video + "&autoplay=1"
+	/* //iframe 
 	videoContainer.innerHTML = `
 	<iframe src="${video}" width="640" height="480" allow="autoplay">
 	</iframe>
 	<a href="${video.replace('preview','view')}">Tekan di sini, jika video gagal dimuat...</a>
 	`;
+	*/
+	//videoContainer -> video HTML5 autoplay allowfullscreen
+	
+	let vid = document.createElement('video');
+	let source = document.createElement('source');
+	
+	source.setAttribute('src', video);
+	source.setAttribute('type', 'video/mp4');
+	vid.appendChild(source);
+	vid.setAttribute('style','width: 640px; height: 480px; position: relative;');
+	vid.setAttribute('controls','');
+	vid.setAttribute('autoplay','');
+	vid.load();
+	jedaMusik();
+	vid.onload = ()=>{
+	  vid.play();
+	}
+	videoContainer.appendChild(vid);
+	
 	let modal = document.createElement('div');
 	modal.setAttribute('class','modalMisi');
 	let isiModal = document.createElement('p');
@@ -281,9 +308,26 @@ function modal(text, video){
 
 	main.appendChild(modal);
 	close.onclick = (e)=>{
+	  playMusik();
 		main.removeChild(modal);
 	}
 }
 
 
 document.body.onclick = ()=>{ playMusik() }
+
+function tesTile(nama, posisi){
+	//let nama = getActive();
+	//nextActive(); //jika misi rahasia sudah dikerjakan
+	//alert(`Pemain ${nama} berada pada posisi ${posisi[nama]}`);
+		let tmpMisi = misi[nama][posisi];
+		tmpMisi = tmpMisi.split(',');
+		let title = tmpMisi[0];
+		let video = tmpMisi[1];
+		video = video.replace('view?usp=drive_link','preview?autoplay=1');
+		modal(title, video);
+		//setTimeout(()=>{
+			//window.open(video);
+		//}, 800);
+		
+	}
