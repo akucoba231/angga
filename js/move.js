@@ -300,12 +300,13 @@ function modal(text, video){
 	vid.setAttribute('style','width: 640px; height: 480px; position: relative;');
 	vid.setAttribute('controls','');
 	vid.setAttribute('autoplay','');
-	
+
+	/*
 	vid.load();
 	vid.onload = ()=>{
 	  vid.play();
 	} 
-	
+	*/
 	
 	videoContainer.appendChild(vid);
 	
